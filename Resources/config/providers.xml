@@ -23,6 +23,16 @@
             <!-- international prefix -->
             <argument></argument>
         </service>
+
+        <service id="sms.provider.twilio" class="SmsSender\Provider\TwilioProvider" public="false">
+            <argument type="service" id="sms.http_adapter" />
+            <!-- accountSid -->
+            <argument></argument>
+            <!-- API secret -->
+            <argument></argument>
+            <!-- international prefix -->
+            <argument></argument>
+        </service>
     </services>
 
 </container>

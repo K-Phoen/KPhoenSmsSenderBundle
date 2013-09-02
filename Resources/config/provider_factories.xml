@@ -11,6 +11,10 @@
         <service id="sms.provider.factory.nexmo" class="KPhoen\SmsSenderBundle\DependencyInjection\Factory\NexmoProviderFactory">
             <tag name="sms.provider.factory" />
         </service>
+
+        <service id="sms.provider.factory.twilio" class="KPhoen\SmsSenderBundle\DependencyInjection\Factory\TwilioProviderFactory">
+            <tag name="sms.provider.factory" />
+        </service>
     </services>
 
 </container>
