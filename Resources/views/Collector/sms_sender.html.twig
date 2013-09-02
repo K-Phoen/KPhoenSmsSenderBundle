@@ -1,0 +1,63 @@
+{% extends 'WebProfilerBundle:Profiler:layout.html.twig' %}
+
+{% block toolbar %}
+    {# the web debug toolbar content #}
+    {% set icon %}
+        <img alt="SmsSender" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAADX0lEQVR42p1V20vTcRQ/37nN2+Z1zgvBcN41FUePEVRvQkggvYRP6UOGEJX04kO92kOEXSjCf6CHhMJeIuglepqIuKmIOmJrc87rdGvu0ud88Tu2NcVfB8b3e87v7HzO/StIA/X19V0XQtzFz5FKpWwQefH7gfububm57/n+I85juKury1hYWPhSr9ePlJeXE+6EOyUSCYpEIrS/v0/xePyt0+kchXpSM4DD4XhWVFT0qLKyUhqLRqOUTCbJYDCQyWSi0tJSCgaDLJ8EyOMzAdhb0FNch05ETnh7o7q6Whphw7nEAFVVVeT1euP4bkO6fKcC9Pb2vi8pKbnDf0BuKRaLyZRsbm7S8fHxqVFaLBaZrnA4/GB+fv75WQCBhoYGKxRZWRpnw8jxmWlEConrs7W1lURtXkP/4eLiYiwN0NPTcxHHvYKCguGamhp9IBCQEWghjprrsre3x9F8XFhYGJQA3d3dt3FMI5fG3d1dqcCp0UIcATcBF724uJh2dnY46mEB43Z46i4rKzOiv2l8fJwGBgY0GWeamZmhiYkJeTebzfI8ODhwiY6OjndAH0Hn0OHhISEszcYVoQPlyTOCRpEtzQBBhGRRhXS5XNTZ2UlcA6ZQKCR5litSfD49Rdy67LBob29PsfcMwEV1u90EUHkqYp4NbW9vy0LW1taeqqeIbXIdRVtbW1Kn0wk1QEtLS9IIk9VqlTycSMsZJJPP1VMEm3IoRUtLSwLF1akPy8vLaSWAS16dufJ8epmEjKREc3NzDAAGJVxZWZHtpojbjXk+FSk+V6+1tTULABH8EY2NjX6EU6uEq6ur/91FcDYXwCeampq+IZKrSjg1NUX9/f2ajc/OztLY2FiWDI5/5ggGMd4fchfZ2tpaFm+32zUB8srATrrJq0KH9sLqiBgzFdbX19N3zu1ZmzQfYbYiaGGTOPHuFSZvFKOdVtjY2JAnItS89LB2eMheIAv3JQC2pwnD8xvdZOJFx+TxeMhms2muBc8GBix0dHR0AU5G0+saANfq6uq+IjTBw8TP4nk9593DG7SiooL3TwIv32VM/k/+lvXg1NfXD2ETTvN7wMuKp/E8xPXhxwmPTRie3/L7/V/Ut39eNIBcQqqewPsrYM3nzIwH+p/g0KTP5/uV+eEvOmi1Odr6vHIAAAAASUVORK5CYII=" />
+        <span class="sf-toolbar-status">{{ collector.smsCount }}</span>
+    {% endset %}
+    {% set text %}
+        <div class="sf-toolbar-info-piece">
+            <b>SMS sent</b>
+            <span>{{ collector.smsCount }}</span>
+        </div>
+        <div class="sf-toolbar-info-piece">
+            <b>Time</b>
+            <span>{{ '%0.2f'|format(collector.time * 1000) }} ms</span>
+        </div>
+    {% endset %}
+
+    {% include 'WebProfilerBundle:Profiler:toolbar_item.html.twig' with { 'link': profiler_url } %}
+{% endblock %}
+
+{% block menu %}
+    {# the menu content #}
+    <span class="label">
+        <span class="icon"><img src="{{ asset('bundles/kphoensmssender/images/SMS.png') }}" alt="" /></span>
+        <strong>SMS SENDER</strong>
+        <span class="count">
+            <span>{{ collector.smsCount }}</span>
+            <span>{{ '%0.2f'|format(collector.time * 1000) }} ms</span>
+        </span>
+    </span>
+{% endblock %}
+
+{% block panel %}
+    <h2>Sent SMS</h2>
+    <table summary="Show sent sms">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Content</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if not collector.smsCount %}
+            <tr><td colspan="5">No SMS sent.</td></tr>
+        {% else %}
+            {% for i, sms in collector.sms %}
+            <tr>
+                <td>{{ sms.id|default('-') }}</td>
+                <td>{{ sms.originator|default('-') }}</td>
+                <td>{{ sms.recipient|default('-') }}</td>
+                <td>{{ sms.body|default('-') }}</td>
+                <td>{{ sms.status|default('-') }}</td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

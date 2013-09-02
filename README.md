@@ -15,6 +15,13 @@ For documentation, see:
 [Read the documentation](https://github.com/K-Phoen/KPhoenSmsSenderBundle/blob/master/Resources/doc/index.md)
 
 
+Credits
+-------
+
+ * [Kévin Gomez](http://github.com/K-Phoen/)
+ * [Aha-Soft](http://www.aha-soft.com/) for the web toolbar icon
+
+
 License
 -------
 

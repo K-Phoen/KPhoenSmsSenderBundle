@@ -15,6 +15,10 @@
         <service id="sms.provider.factory.twilio" class="KPhoen\SmsSenderBundle\DependencyInjection\Factory\TwilioProviderFactory">
             <tag name="sms.provider.factory" />
         </service>
+
+        <service id="sms.provider.factory.dummy" class="KPhoen\SmsSenderBundle\DependencyInjection\Factory\DummyProviderFactory">
+            <tag name="sms.provider.factory" />
+        </service>
     </services>
 
 </container>

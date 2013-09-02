@@ -33,6 +33,9 @@
             <!-- international prefix -->
             <argument></argument>
         </service>
+
+        <service id="sms.provider.dummy" class="SmsSender\Provider\DummyProvider" public="false">
+        </service>
     </services>
 
 </container>
