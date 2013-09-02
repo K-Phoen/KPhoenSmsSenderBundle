@@ -4,6 +4,10 @@ KPhoenSmsSenderBundle
 Integration of the [**SmsSender**](https://github.com/Carpe-Hora/SmsSender/)
 library into Symfony2.
 
+This bundle also integrates SmsSender in Symfony's Web Profiler.
+
+<img src="https://raw.github.com/K-Phoen/KPhoenSmsSenderBundle/master/Resources/doc/web_profiler.png" width="280" height="175" />
+
 
 Documentation
 -------------
