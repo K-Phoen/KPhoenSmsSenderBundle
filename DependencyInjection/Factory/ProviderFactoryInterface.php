@@ -16,8 +16,8 @@ interface ProviderFactoryInterface
      * Creates the adapter, registers it and returns its id
      *
      * @param ContainerBuilder $container A ContainerBuilder instance
-     * @param string $id The id of the service
-     * @param array $config An array of configuration
+     * @param string           $id        The id of the service
+     * @param array            $config    An array of configuration
      */
     public function create(ContainerBuilder $container, $id, array $config);
 

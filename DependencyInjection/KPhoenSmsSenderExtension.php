@@ -9,8 +9,6 @@ use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Config\FileLocator;
 
-use KPhoen\SmsSenderBundle\DependencyInjection\Factory\ProviderFactoryInterface;
-
 class KPhoenSmsSenderExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
