@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="sms.provider.factory.esendex" class="KPhoen\SmsSenderBundle\DependencyInjection\Factory\EsendexProviderFactory">
+            <tag name="sms.provider.factory" />
+        </service>
+
+        <service id="sms.provider.factory.nexmo" class="KPhoen\SmsSenderBundle\DependencyInjection\Factory\NexmoProviderFactory">
+            <tag name="sms.provider.factory" />
+        </service>
+    </services>
+
+</container>

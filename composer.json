@@ -1,0 +1,23 @@
+{
+    "name": "kphoen/sms-sender-bundle",
+    "description": "Integrates the SmsSender library in Symfony2 applications",
+    "keywords": ["sms", "abstraction"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kévin Gomez",
+            "email": "contact@kevingomez.fr",
+            "homepage": "http://www.kevingomez.fr/"
+        }
+    ],
+    "require": {
+        "symfony/symfony": ">=2.1.0",
+        "symfony/framework-bundle": ">=2.1.0",
+        "Carpe-Hora/SmsSender": "*"
+    },
+    "autoload": {
+        "psr-0": { "KPhoen\\SmsSenderBundle": "" }
+    },
+    "target-dir": "KPhoen/SmsSenderBundle"
+}

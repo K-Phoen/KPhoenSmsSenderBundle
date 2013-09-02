@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="sms.provider.esendex" class="SmsSender\Provider\EsendexProvider" public="false">
+            <argument type="service" id="sms.http_adapter" />
+            <!-- username -->
+            <argument></argument>
+            <!-- password -->
+            <argument></argument>
+            <!-- accountRef -->
+            <argument></argument>
+        </service>
+
+        <service id="sms.provider.nexmo" class="SmsSender\Provider\NexmoProvider" public="false">
+            <argument type="service" id="sms.http_adapter" />
+            <!-- API key -->
+            <argument></argument>
+            <!-- API secret -->
+            <argument></argument>
+            <!-- international prefix -->
+            <argument></argument>
+        </service>
+    </services>
+
+</container>
