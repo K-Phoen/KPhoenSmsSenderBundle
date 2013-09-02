@@ -6,7 +6,7 @@ library into Symfony2.
 
 This bundle also integrates SmsSender in Symfony's Web Profiler.
 
-<img src="https://github.com/K-Phoen/KPhoenSmsSenderBundle/blob/master/Resources/doc/web_profiler.png" width="280" height="175" />
+<img src="https://raw.github.com/K-Phoen/KPhoenSmsSenderBundle/master/Resources/doc/web_profiler.png" width="280" height="175" />
 
 
 Installation
