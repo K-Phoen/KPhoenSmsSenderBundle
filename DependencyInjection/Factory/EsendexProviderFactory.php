@@ -20,7 +20,7 @@ class EsendexProviderFactory implements ProviderFactoryInterface
         $container->getDefinition($id)
             ->replaceArgument(1, $config['username'])
             ->replaceArgument(2, $config['password'])
-            ->replaceArgument(3, $config['accountRef'])
+            ->replaceArgument(3, $config['account_ref'])
         ;
     }
 
@@ -41,7 +41,7 @@ class EsendexProviderFactory implements ProviderFactoryInterface
             ->children()
                 ->scalarNode('username')->isRequired()->end()
                 ->scalarNode('password')->isRequired()->end()
-                ->scalarNode('accountRef')->isRequired()->end()
+                ->scalarNode('account_ref')->isRequired()->end()
             ->end()
         ;
     }

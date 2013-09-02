@@ -18,9 +18,9 @@ class TwilioProviderFactory implements ProviderFactoryInterface
     public function create(ContainerBuilder $container, $id, array $config)
     {
         $container->getDefinition($id)
-            ->replaceArgument(1, $config['accountSid'])
-            ->replaceArgument(2, $config['apiSecret'])
-            ->replaceArgument(3, $config['internationalPrefix'])
+            ->replaceArgument(1, $config['account_sid'])
+            ->replaceArgument(2, $config['api_secret'])
+            ->replaceArgument(3, $config['international_prefix'])
         ;
     }
 
@@ -39,9 +39,9 @@ class TwilioProviderFactory implements ProviderFactoryInterface
     {
         $node
             ->children()
-                ->scalarNode('accountSid')->isRequired()->end()
-                ->scalarNode('apiSecret')->isRequired()->end()
-                ->scalarNode('internationalPrefix')->defaultValue('+33')->end()
+                ->scalarNode('account_sid')->isRequired()->end()
+                ->scalarNode('api_secret')->isRequired()->end()
+                ->scalarNode('international_prefix')->defaultValue('+33')->end()
             ->end()
         ;
     }

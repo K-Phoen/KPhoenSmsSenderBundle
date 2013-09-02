@@ -42,8 +42,8 @@ k_phoen_sms_sender:
     providers:    [nexmo]
 
     nexmo:
-        apiKey:     lala
-        apiSecret:  lala
+        api_key:     lala
+        api_secret:  lala
 ```
 
 The `providers` section defines the list of providers that you want to use in
