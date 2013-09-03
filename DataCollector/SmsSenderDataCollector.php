@@ -6,15 +6,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\DataCollector\DataCollector;
 
-use SmsSender\LoggableSmsSender;
+use KPhoen\SmsSenderBundle\Logger\SmsSenderLogger;
 
 class SmsSenderDataCollector extends DataCollector
 {
-    protected $sms_sender;
+    protected $logger;
 
-    public function __construct(LoggableSmsSender $sender)
+    public function __construct(SmsSenderLogger $logger)
     {
-        $this->sms_sender = $sender;
+        $this->logger = $logger;
     }
 
     /**
@@ -23,7 +23,7 @@ class SmsSenderDataCollector extends DataCollector
     public function collect(Request $request, Response $response, \Exception $exception = null)
     {
         $this->data = array(
-            'sms'       => $list = $this->retrieveSmsList(),
+            'smsData'   => $list = $this->retrieveSmsList(),
             'smsCount'  => count($list),
             'time'      => $this->computeTime(),
         );
@@ -44,9 +44,9 @@ class SmsSenderDataCollector extends DataCollector
         return $this->data['time'];
     }
 
-    public function getSms()
+    public function getSmsData()
     {
-        return $this->data['sms'];
+        return $this->data['smsData'];
     }
 
     public function getSmsCount()
@@ -57,8 +57,8 @@ class SmsSenderDataCollector extends DataCollector
     protected function computeTime()
     {
         $total = 0;
-        foreach ($this->sms_sender->getLoggedData() as $data) {
-            $total += $data['time'];
+        foreach ($this->logger->getSms() as $data) {
+            $total += $data['duration'];
         }
 
         return $total;
@@ -66,11 +66,6 @@ class SmsSenderDataCollector extends DataCollector
 
     protected function retrieveSmsList()
     {
-        $list = array();
-        foreach ($this->sms_sender->getLoggedData() as $data) {
-            $list[] = $data['sms'];
-        }
-
-        return $list;
+        return $this->logger->getSms();
     }
 }

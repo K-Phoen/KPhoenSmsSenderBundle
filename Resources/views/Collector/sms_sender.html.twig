@@ -42,19 +42,23 @@
                 <th>To</th>
                 <th>Content</th>
                 <th>Status</th>
+                <th>Duration</th>
+                <th>Provider</th>
             </tr>
         </thead>
         <tbody>
         {% if not collector.smsCount %}
-            <tr><td colspan="5">No SMS sent.</td></tr>
+            <tr><td colspan="7">No SMS sent.</td></tr>
         {% else %}
-            {% for i, sms in collector.sms %}
+            {% for i, data in collector.smsData %}
             <tr>
-                <td>{{ sms.id|default('-') }}</td>
-                <td>{{ sms.originator|default('-') }}</td>
-                <td>{{ sms.recipient|default('-') }}</td>
-                <td>{{ sms.body|default('-') }}</td>
-                <td>{{ sms.status|default('-') }}</td>
+                <td>{{ data.sms.id|default('-') }}</td>
+                <td>{{ data.sms.originator|default('-') }}</td>
+                <td>{{ data.sms.recipient|default('-') }}</td>
+                <td>{{ data.sms.body|default('-') }}</td>
+                <td>{{ data.sms.status|default('-') }}</td>
+                <td>{{ '%0.2f'|format(data.duration * 1000) }} ms</td>
+                <td>{{ data.provider_class|default('-') }}</td>
             </tr>
             {% endfor %}
         {% endif %}

@@ -4,18 +4,25 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="sms.sender.class">SmsSender\LoggableSmsSender</parameter>
+        <parameter key="sms.sender.class">KPhoen\SmsSenderBundle\SmsSender\LoggableSmsSender</parameter>
     </parameters>
 
     <services>
         <!-- SMS sender -->
         <service id="sms.sender" class="%sms.sender.class%">
+            <argument type="service" id="sms.sender.logger" />
+        </service>
+
+        <!-- Logger -->
+        <service id="sms.sender.logger" class="KPhoen\SmsSenderBundle\Logger\SmsSenderLogger">
+            <tag name="monolog.logger" channel="sms_sender" />
+            <argument type="service" id="logger" on-invalid="null" />
         </service>
 
         <!-- Data collector -->
         <service id="sms.data_collector" class="KPhoen\SmsSenderBundle\DataCollector\SmsSenderDataCollector">
             <tag name="data_collector" template="KPhoenSmsSenderBundle:Collector:sms_sender" id="sms_sender" />
-            <argument type="service" id="sms.sender" />
+            <argument type="service" id="sms.sender.logger" />
         </service>
 
         <!-- HTTP adapters -->
