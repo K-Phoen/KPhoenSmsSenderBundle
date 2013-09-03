@@ -1,4 +1,4 @@
-KPhoenSmsSenderBundle
+KPhoenSmsSenderBundle [![Build Status](https://travis-ci.org/K-Phoen/KPhoenSmsSenderBundle.png)](https://travis-ci.org/K-Phoen/KPhoenSmsSenderBundle)
 =====================
 
 Integration of the [**SmsSender**](https://github.com/Carpe-Hora/SmsSender/)
