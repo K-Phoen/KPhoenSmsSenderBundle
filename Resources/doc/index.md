@@ -35,6 +35,7 @@ Register the bundle in `app/AppKernel.php`:
         );
     }
 
+
 Configuration
 -------------
 
@@ -54,6 +55,7 @@ The `providers` section defines the list of providers that you want to use in
 your application.
 Each provider defines its own section in the configuration. In this example, the
 Nexmo provider needs an API key and an API secret in order to work.
+
 
 Usage
 -----
@@ -78,3 +80,34 @@ public function sendAction()
 
 See [SmsSender's documentation](https://github.com/Carpe-Hora/SmsSender/) for
 more details about the `SmsSender`'s features.
+
+
+Reference Configuration
+-----------------------
+
+You MUST define the providers you want to use in your configuration. Some of
+them need information (API key for instance).
+
+You'll find the reference configuration below:
+
+``` yaml
+# app/config/config.yml
+k_phoen_sms_sender:
+    http_adapter: curl
+    providers:    [dummy, esendex, nexmo, twilio]
+
+    dummy:            ~
+
+    twilio:
+        account_sid:  lala
+        api_secret:   lala
+
+    nexmo:
+        api_key:      lala
+        api_secret:   lala
+
+    esendex:
+        username:     lala
+        password:     lala
+        account_ref:  lala
+```
