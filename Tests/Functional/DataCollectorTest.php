@@ -10,7 +10,11 @@ class DataCollectorTest extends WebTestCase
     public function testMessagesAreCollected()
     {
         $client = static::createClient();
-        $client->enableProfiler();
+
+        // only exists in symfony >2.1
+        if (method_exists($client, 'enableProfiler')) {
+            $client->enableProfiler();
+        }
 
         $crawler = $client->request('GET', '/', array(
             'recipient' => '0652525252',
