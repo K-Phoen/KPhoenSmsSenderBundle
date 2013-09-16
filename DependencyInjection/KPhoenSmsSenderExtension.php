@@ -45,6 +45,11 @@ class KPhoenSmsSenderExtension extends Extension
         // fix the sms.http_adapter definition to point to the right adapter
         $container->setAlias('sms.http_adapter', sprintf('sms.http_adapter.%s', $config['http_adapter']));
         $container->getAlias('sms.http_adapter')->setPublic(false);
+
+        // define an alias to the real pooling service (will be used by the compiler pass)
+        if ($config['pool'] !== null) {
+            $container->setAlias('sms.pool', sprintf('sms.pool.%s', $config['pool']));
+        }
     }
 
     protected function createProvider($name, array $factories, ContainerBuilder $container, array $providersConfig)

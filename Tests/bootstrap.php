@@ -5,3 +5,4 @@ if (!is_file($loaderFile = __DIR__.'/../vendor/autoload.php')) {
 }
 
 $loader = require $loaderFile;
+$loader->add('KPhoen\TestBundle', __DIR__ . '/Fixtures/App/src');

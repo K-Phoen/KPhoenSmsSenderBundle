@@ -21,6 +21,7 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('k_phoen_sms_sender');
         $rootNode->ignoreExtraKeys();
 
+        $this->addPoolNode($rootNode);
         $this->addHttpAdapterNode($rootNode);
         $this->addProvidersNode($rootNode);
 
@@ -60,6 +61,17 @@ class Configuration implements ConfigurationInterface
                     ->ifNotInArray($supportedHttpAdapters)
                     ->thenInvalid('The http_adapter %s is not supported. Please choose one of ' . implode(', ', $supportedHttpAdapters))
                 ->end()
+            ->end();
+
+        return $rootNode;
+    }
+
+    protected function addPoolNode(ArrayNodeDefinition $rootNode)
+    {
+        $rootNode
+            ->children()
+                ->scalarNode('pool')
+                ->defaultNull()
             ->end();
 
         return $rootNode;
