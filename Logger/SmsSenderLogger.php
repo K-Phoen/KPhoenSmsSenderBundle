@@ -21,9 +21,9 @@ class SmsSenderLogger
     /**
      * Log a SMS.
      *
-     * @param Resultinterface   $sms            The SMS to log.
-     * @param float             $duration       The time required to send the SMS (in seconds).
-     * @param string            $provider_class The class name of the provider which sent the SMS.
+     * @param Resultinterface $sms            The SMS to log.
+     * @param float           $duration       The time required to send the SMS (in seconds).
+     * @param string          $provider_class The class name of the provider which sent the SMS.
      */
     public function logMessage(ResultInterface $sms, $duration, $provider_class)
     {

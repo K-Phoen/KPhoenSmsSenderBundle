@@ -4,7 +4,6 @@ namespace KPhoen\SmsSenderBundle\Tests\Functional;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-
 class DataCollectorTest extends WebTestCase
 {
     public function testMessagesAreCollected()
