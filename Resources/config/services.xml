@@ -4,13 +4,20 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="sms.sender.class">KPhoen\SmsSenderBundle\SmsSender\LoggableSmsSender</parameter>
+        <parameter key="sms.sender.class">SmsSender\SmsSender</parameter>
+        <parameter key="sms.logged_sender.class">KPhoen\SmsSenderBundle\SmsSender\LoggableSmsSender</parameter>
+        <parameter key="sms.delayed_sender.class">SmsSender\DelayedSender</parameter>
     </parameters>
 
     <services>
+        <!-- Event subscribers -->
+        <service id="sms.flush.subscriber" class="KPhoen\SmsSenderBundle\EventListener\FlushSenderSubscriber">
+            <argument type="service" id="service_container" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+
         <!-- SMS sender -->
         <service id="sms.sender" class="%sms.sender.class%">
-            <argument type="service" id="sms.sender.logger" />
         </service>
 
         <!-- Logger -->
@@ -30,6 +37,10 @@
         </service>
 
         <service id="sms.http_adapter.curl" class="SmsSender\HttpAdapter\CurlHttpAdapter" public="false">
+        </service>
+
+        <!-- Pools -->
+        <service id="sms.pool.memory" class="SmsSender\Pool\MemoryPool" public="false">
         </service>
     </services>
 
