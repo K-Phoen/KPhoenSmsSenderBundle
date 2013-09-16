@@ -1,0 +1,19 @@
+framework:
+    secret: Hell yeah!
+    router: { resource: "%kernel.root_dir%/config/routing.yml" }
+    form: true
+    csrf_protection: true
+    session: ~
+    default_locale: en
+    translator: { fallback: en }
+    profiler: { only_exceptions: false }
+    test: ~
+    session:
+        storage_id: session.storage.filesystem
+
+k_phoen_sms_sender:
+    pool:         memory
+    http_adapter: curl
+    providers:    [dummy]
+
+    dummy: ~
