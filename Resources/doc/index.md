@@ -44,6 +44,7 @@ Enable the bundle's configuration in `app/config/config.yml`:
 ``` yaml
 # app/config/config.yml
 k_phoen_sms_sender:
+    pool:         memory    # can be null (and is by default)
     providers:    [nexmo]
 
     nexmo:
@@ -55,6 +56,10 @@ The `providers` section defines the list of providers that you want to use in
 your application.
 Each provider defines its own section in the configuration. In this example, the
 Nexmo provider needs an API key and an API secret in order to work.
+
+The `pool` section defines the pooling strategy used by the sender. When
+enabled, messages sending is deferred to after the response is sent to the
+user (see Symfony's [kernel.terminate](http://symfony.com/doc/current/components/http_kernel/introduction.html#the-kernel-terminate-event) event).
 
 
 Usage
@@ -93,10 +98,11 @@ You'll find the reference configuration below:
 ``` yaml
 # app/config/config.yml
 k_phoen_sms_sender:
+    pool:         ~   # right now, only "memory" is supported
     http_adapter: curl
     providers:    [dummy, esendex, nexmo, twilio]
 
-    dummy:            ~
+    dummy:        ~
 
     twilio:
         account_sid:  lala
