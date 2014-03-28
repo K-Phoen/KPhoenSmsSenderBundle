@@ -100,7 +100,7 @@ You'll find the reference configuration below:
 k_phoen_sms_sender:
     pool:         ~   # right now, only "memory" is supported
     http_adapter: curl
-    providers:    [dummy, esendex, nexmo, twilio]
+    providers:    [dummy, esendex, nexmo, twilio, cardboardfish]
 
     dummy:        ~
 
@@ -116,4 +116,8 @@ k_phoen_sms_sender:
         username:     lala
         password:     lala
         account_ref:  lala
+
+    cardboardfish:
+        username:     lala
+        password:     lala
 ```
