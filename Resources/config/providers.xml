@@ -34,6 +34,14 @@
             <argument></argument>
         </service>
 
+        <service id="sms.provider.cardboardfish" class="SmsSender\Provider\CardboardfishProvider" public="false">
+            <argument type="service" id="sms.http_adapter" />
+            <!-- username -->
+            <argument></argument>
+            <!-- password -->
+            <argument></argument>
+        </service>
+
         <service id="sms.provider.dummy" class="SmsSender\Provider\DummyProvider" public="false">
         </service>
     </services>
