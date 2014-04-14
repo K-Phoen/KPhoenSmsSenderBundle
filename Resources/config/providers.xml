@@ -42,6 +42,14 @@
             <argument></argument>
         </service>
 
+        <service id="sms.provider.valuefirst" class="SmsSender\Provider\ValueFirstProvider" public="false">
+            <argument type="service" id="sms.http_adapter" />
+            <!-- username -->
+            <argument></argument>
+            <!-- password -->
+            <argument></argument>
+        </service>
+
         <service id="sms.provider.dummy" class="SmsSender\Provider\DummyProvider" public="false">
         </service>
     </services>
