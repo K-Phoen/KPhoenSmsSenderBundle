@@ -1,6 +1,6 @@
 <?php
 
-namespace KPhoen\SmsSenderBundle\Tests\SmsSender;
+namespace KPhoen\SmsSenderBundle\Tests\Logger;
 
 use KPhoen\SmsSenderBundle\Logger\SmsSenderLogger;
 

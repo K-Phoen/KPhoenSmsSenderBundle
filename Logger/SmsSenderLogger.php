@@ -44,8 +44,8 @@ class SmsSenderLogger
     /**
      * Log an error.
      *
-     * @param Exception     $error          The error.
-     * @param string        $provider_class The class name of the provider which sent the SMS.
+     * @param Exception $error          The error.
+     * @param string    $provider_class The class name of the provider which sent the SMS.
      */
     public function logError(WrappedException $error, $provider_class)
     {
