@@ -17,7 +17,7 @@ class LoggableSmsSenderTest extends \PHPUnit_Framework_TestCase
         $result = $this->getMock('\SmsSender\Result\ResultInterface');
 
         // setup the sender
-        $sender = $this->getMock('\SmsSender\SmsSender');
+        $sender = $this->getMock('\SmsSender\SmsSenderInterface', array('getProvider', 'send'));
         $sender->expects($this->once())
             ->method('getProvider')
             ->will($this->returnValue($provider));
@@ -31,7 +31,7 @@ class LoggableSmsSenderTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnValue($result));
 
         // setup the logger
-        $logger = $this->getMock('\KPhoen\SmsSenderBundle\Logger\SmsSenderLogger');
+        $logger = $this->getMock('\KPhoen\SmsSenderBundle\Logger\SmsSenderLogger', array('logMessage'));
         $logger->expects($this->once())
             ->method('logMessage')
             ->with(

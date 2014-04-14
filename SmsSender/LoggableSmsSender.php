@@ -45,7 +45,11 @@ class LoggableSmsSender implements DelayedSenderInterface
     public function flush()
     {
         if ($this->sender instanceof DelayedSenderInterface) {
-            $this->sender->flush();
+            list($sentMessages, $errors) = $this->sender->flush();
+
+            foreach ($errors as $error) {
+                $this->logger->logError($error, $this->getProviderClass());
+            }
         }
     }
 

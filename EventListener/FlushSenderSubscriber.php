@@ -19,9 +19,7 @@ class FlushSenderSubscriber implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return array(
-            KernelEvents::TERMINATE => 'onKernelTerminate',
-        );
+        return array(KernelEvents::TERMINATE => 'onKernelTerminate');
     }
 
     public function onKernelTerminate()
