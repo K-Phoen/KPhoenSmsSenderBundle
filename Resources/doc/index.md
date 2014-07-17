@@ -100,7 +100,7 @@ You'll find the reference configuration below:
 k_phoen_sms_sender:
     pool:         ~   # right now, only "memory" is supported
     http_adapter: curl
-    providers:    [dummy, esendex, nexmo, twilio, cardboardfish, valuefirst]
+    providers:    [dummy, esendex, nexmo, twilio, cardboardfish, valuefirst, swisscom]
 
     dummy:        ~
 
@@ -124,4 +124,8 @@ k_phoen_sms_sender:
     valuefirst:
         username:     lala
         password:     lala
+
+    swisscom:
+        client_id:              lala
+        international_prefix:   '+41'
 ```

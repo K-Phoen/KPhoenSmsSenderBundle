@@ -50,6 +50,14 @@
             <argument></argument>
         </service>
 
+        <service id="sms.provider.swisscom" class="SmsSender\Provider\SwisscomProvider" public="false">
+            <argument type="service" id="sms.http_adapter" />
+            <!-- Client id -->
+            <argument></argument>
+            <!-- international prefix -->
+            <argument></argument>
+        </service>
+
         <service id="sms.provider.dummy" class="SmsSender\Provider\DummyProvider" public="false">
         </service>
     </services>
