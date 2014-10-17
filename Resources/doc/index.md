@@ -128,4 +128,8 @@ k_phoen_sms_sender:
     swisscom:
         client_id:              lala
         international_prefix:   '+41'
+
+    websms:
+        access_token:         lala
+        international_prefix: '+43'
 ```
