@@ -58,6 +58,14 @@
             <argument></argument>
         </service>
 
+        <service id="sms.provider.websms" class="SmsSender\Provider\WebsmsProvider" public="false">
+            <argument type="service" id="sms.http_adapter" />
+            <!-- Access token -->
+            <argument></argument>
+            <!-- International prefix -->
+            <argument></argument>
+        </service>
+
         <service id="sms.provider.dummy" class="SmsSender\Provider\DummyProvider" public="false">
         </service>
     </services>
