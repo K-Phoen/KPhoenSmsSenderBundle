@@ -8,6 +8,12 @@ This bundle also integrates SmsSender in Symfony's Web Profiler.
 
 <img src="https://raw.github.com/K-Phoen/KPhoenSmsSenderBundle/master/Resources/doc/web_profiler.png" width="280" height="175" />
 
+Status
+------
+
+This project is **DEPRECATED** and should NOT be used. 
+
+If someone magically appears and wants to maintain this project, I'll gladly give access to this repository.
 
 Documentation
 -------------
