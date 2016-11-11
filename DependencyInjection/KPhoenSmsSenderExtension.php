@@ -89,7 +89,7 @@ class KPhoenSmsSenderExtension extends Extension
             $factory = $tempContainer->get($id);
             $factories[str_replace('-', '_', $factory->getKey())] = $factory;
         }
-
+        $container->addDefinitions($tempContainer->getDefinitions());
         return $factories;
     }
 }
